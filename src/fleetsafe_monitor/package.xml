@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<package format="3">
+  <name>fleetsafe_monitor</name>
+  <version>0.1.0</version>
+  <description>Monitor</description>
+  <maintainer email="frankleroyvan@gmail.com">Frank</maintainer>
+  <license>Apache-2.0</license>
+  <buildtool_depend>ament_cmake</buildtool_depend>
+  <depend>rclpy</depend>
+  <depend>sensor_msgs</depend>
+  <depend>nav_msgs</depend>
+  <depend>fleetsafe_msgs</depend>
+  <export>
+    <build_type>ament_cmake</build_type>
+  </export>
+</package>

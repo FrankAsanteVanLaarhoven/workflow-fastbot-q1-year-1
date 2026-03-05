@@ -1,0 +1,5 @@
+std_msgs/Header header
+string robot_id
+string constraint_name
+float32 robustness
+float32 signal_value

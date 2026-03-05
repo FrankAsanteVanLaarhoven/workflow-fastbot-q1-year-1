@@ -1,0 +1,13 @@
+build/
+install/
+log/
+__pycache__/
+*.pyc
+*.egg-info/
+.env
+*.h5
+*.bag
+*.db3
+/data/
+.vscode/
+*.swp

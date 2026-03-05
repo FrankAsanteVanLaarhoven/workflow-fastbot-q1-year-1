@@ -1,0 +1,9 @@
+std_msgs/Header header
+string robot_id
+uint32 episode_id
+float32 total_reward
+float32 total_cost
+float32 path_length
+float32 time_to_goal
+bool goal_reached
+uint32 num_violations

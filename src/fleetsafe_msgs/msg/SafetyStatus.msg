@@ -1,0 +1,5 @@
+std_msgs/Header header
+string robot_id
+float32 collision_robustness
+float32 speed_robustness
+bool is_safe
