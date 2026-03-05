@@ -245,6 +245,8 @@ w("src/fastbot_description/urdf/fastbot.urdf.xacro", """<?xml version="1.0"?>
 <robot name="fastbot" xmlns:xacro="http://www.ros.org/wiki/xacro">
   <link name="base_link"><visual><geometry><cylinder radius="0.175" length="0.1"/></geometry></visual></link>
 </robot>""")
+w("src/fastbot_description/meshes/.keep", "")
+w("src/fastbot_description/launch/.keep", "")
 
 # 3. fastbot_nav2
 w("src/fastbot_nav2/package.xml", pkg_xml("fastbot_nav2", "Nav2", exec_deps=["nav2_bringup"]))
@@ -253,6 +255,9 @@ project(fastbot_nav2)
 find_package(ament_cmake REQUIRED)
 install(DIRECTORY config maps launch DESTINATION share/${PROJECT_NAME})
 ament_package()""")
+w("src/fastbot_nav2/config/.keep", "")
+w("src/fastbot_nav2/maps/.keep", "")
+w("src/fastbot_nav2/launch/.keep", "")
 
 # 4. fastbot_bringup
 w("src/fastbot_bringup/package.xml", pkg_xml("fastbot_bringup", "Bringup", ["rclpy", "nav2_msgs", "nav_msgs", "sensor_msgs", "geometry_msgs", "fleetsafe_msgs"]))
@@ -266,6 +271,8 @@ install(DIRECTORY launch config DESTINATION share/${PROJECT_NAME})
 ament_package()""")
 w("src/fastbot_bringup/fastbot_bringup/__init__.py", "")
 w("src/fastbot_bringup/fastbot_bringup/baseline_nav_node.py", BASELINE)
+w("src/fastbot_bringup/launch/.keep", "")
+w("src/fastbot_bringup/config/.keep", "")
 
 # 5. fleetsafe_monitor
 w("src/fleetsafe_monitor/package.xml", pkg_xml("fleetsafe_monitor", "Monitor", ["rclpy", "sensor_msgs", "nav_msgs", "fleetsafe_msgs"]))
