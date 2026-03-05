@@ -14,6 +14,12 @@ def w(path, content):
 def pkg_xml(name, desc, deps=None, exec_deps=None):
     d_str = "".join([f"  <depend>{d}</depend>\n" for d in (deps or [])])
     e_str = "".join([f"  <exec_depend>{d}</exec_depend>\n" for d in (exec_deps or [])])
+    
+    # ROS 2 requires message packages to declare the rosidl_interface_packages group
+    member_group = ""
+    if "msgs" in name:
+        member_group = "  <member_of_group>rosidl_interface_packages</member_of_group>\n"
+        
     return f"""<?xml version="1.0"?>
 <package format="3">
   <name>{name}</name>
@@ -22,7 +28,7 @@ def pkg_xml(name, desc, deps=None, exec_deps=None):
   <maintainer email="frankleroyvan@gmail.com">Frank</maintainer>
   <license>Apache-2.0</license>
   <buildtool_depend>ament_cmake</buildtool_depend>
-{d_str}{e_str}  <export>
+{d_str}{e_str}{member_group}  <export>
     <build_type>ament_cmake</build_type>
   </export>
 </package>"""
@@ -214,16 +220,19 @@ rosidl_generate_interfaces(${PROJECT_NAME}
 )
 ament_export_dependencies(rosidl_default_runtime)
 ament_package()""")
+
 w("src/fleetsafe_msgs/msg/SafetyStatus.msg", """std_msgs/Header header
 string robot_id
 float32 collision_robustness
 float32 speed_robustness
 bool is_safe""")
+
 w("src/fleetsafe_msgs/msg/ConstraintViolation.msg", """std_msgs/Header header
 string robot_id
 string constraint_name
 float32 robustness
 float32 signal_value""")
+
 w("src/fleetsafe_msgs/msg/Episode.msg", """std_msgs/Header header
 string robot_id
 uint32 episode_id
